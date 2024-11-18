@@ -257,7 +257,7 @@ typedef struct {
 } CO_CANtx_t;
 
 /* Max COB ID for standard frame format */
-#define CO_CAN_MSG_SFF_MAX_COB_ID (1 << CAN_SFF_ID_BITS)
+#define CO_CAN_MSG_SFF_MAX_COB_ID (1 << CAN_EFF_ID_BITS)
 
 /* CAN interface object (CANptr), passed to CO_CANinit() */
 typedef struct {

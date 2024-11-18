@@ -66,10 +66,10 @@
 #define FIRST_HB_TIME 500
 #endif
 #ifndef SDO_SRV_TIMEOUT_TIME
-#define SDO_SRV_TIMEOUT_TIME 1000
+#define SDO_SRV_TIMEOUT_TIME 2000
 #endif
 #ifndef SDO_CLI_TIMEOUT_TIME
-#define SDO_CLI_TIMEOUT_TIME 500
+#define SDO_CLI_TIMEOUT_TIME 2000
 #endif
 #ifndef SDO_CLI_BLOCK
 #define SDO_CLI_BLOCK false
