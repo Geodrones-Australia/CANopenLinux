@@ -1092,6 +1092,10 @@ CO_SDOclientUpload(CO_SDOclient_t* SDO_C, uint32_t timeDifference_us, bool_t sen
     CO_SDO_return_t ret = CO_SDO_RT_waitingResponse;
     CO_SDO_abortCode_t abortCode = CO_SDO_AB_NONE;
 
+    // add extended ID flag
+    // TODO: fix where this should go
+    SDO_C->CANtxBuff->ident |= 0x80000000U;
+
     if ((SDO_C == NULL) || !SDO_C->valid) {
         abortCode = CO_SDO_AB_DEVICE_INCOMPAT;
         ret = CO_SDO_RT_wrongArguments;
