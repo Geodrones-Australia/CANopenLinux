@@ -112,21 +112,24 @@ setRxFilters(CO_CANmodule_t* CANmodule) {
 
     struct can_filter rxFiltersCpy[CANmodule->rxSize];
 
-    count = 1;
+    count = 0;
     /* remove unused entries ( id == 0 and mask == 0 ) as they would act as "pass all" filter */
-    //for (i = 0; i < CANmodule->rxSize; i++) {
-        //if ((CANmodule->rxFilter[i].can_id != 0) || (CANmodule->rxFilter[i].can_mask != 0)) {
+    for (i = 0; i < CANmodule->rxSize; i++) {
+        if ((CANmodule->rxFilter[i].can_id != 0) || (CANmodule->rxFilter[i].can_mask != 0)) {
 
-            //rxFiltersCpy[count] = CANmodule->rxFilter[i];
+            rxFiltersCpy[count] = CANmodule->rxFilter[i];
 
-    //        count++;
-    //    }
-    //}
+            count++;
+        }
+    }
 
     if (count == 0) {
         /* No filter is set, disable RX */
         return disableRx(CANmodule);
     }
+
+    //rxFiltersCpy[0].can_id = 0;
+    //rxFiltersCpy[0].can_mask = 0;
 
     retval = CO_ERROR_NO;
     for (i = 0; i < CANmodule->CANinterfaceCount; i++) {
@@ -376,7 +379,7 @@ CO_CANmodule_disable(CO_CANmodule_t* CANmodule) {
 }
 
 CO_ReturnError_t
-CO_CANrxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint16_t ident, uint32_t mask, bool_t rtr, void* object,
+CO_CANrxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint32_t ident, uint32_t mask, bool_t rtr, void* object,
                    void (*CANrx_callback)(void* object, void* message)) {
     CO_ReturnError_t ret = CO_ERROR_NO;
 
@@ -398,11 +401,11 @@ CO_CANrxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint16_t ident, ui
         buffer->timestamp.tv_sec = 0;
 
         /* CAN identifier and CAN mask, bit aligned with CAN module */
-        buffer->ident = ident & CAN_EFF_MASK;
-        if (rtr) {
-            buffer->ident |= CAN_RTR_FLAG;
-        }
-        buffer->mask = (mask & CAN_EFF_MASK) | CAN_EFF_FLAG | CAN_RTR_FLAG;
+        buffer->ident = ident;// & CAN_EFF_MASK;
+//        if (rtr) {
+//            buffer->ident |= CAN_RTR_FLAG;
+//        }
+        buffer->mask = mask;//(mask & CAN_EFF_MASK) | CAN_EFF_FLAG | CAN_RTR_FLAG;
 
         /* Set CAN hardware module filter and mask. */
         CANmodule->rxFilter[index].can_id = buffer->ident;
