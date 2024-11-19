@@ -388,25 +388,61 @@ typedef struct {
  * default identifiers and can be changed in CANopen. Especially PDO identifiers are configured in PDO linking phase of
  * the CANopen network configuration.
  */
-#define CO_CAN_ID_NMT_SERVICE 0x000U /**< 0x000 Network management */
-#define CO_CAN_ID_GFC         0x001U /**< 0x001 Global fail-safe command */
-#define CO_CAN_ID_SYNC        0x080U /**< 0x080 Synchronous message */
-#define CO_CAN_ID_EMERGENCY   0x080U /**< 0x080 Emergency messages (+nodeID) */
-#define CO_CAN_ID_TIME        0x100U /**< 0x100 Time message */
-#define CO_CAN_ID_SRDO_1      0x0FFU /**< 0x0FF Default SRDO1 (+2*nodeID) */
-#define CO_CAN_ID_TPDO_1      0x180U /**< 0x180 Default TPDO1 (+nodeID) */
-#define CO_CAN_ID_RPDO_1      0x200U /**< 0x200 Default RPDO1 (+nodeID) */
-#define CO_CAN_ID_TPDO_2      0x280U /**< 0x280 Default TPDO2 (+nodeID) */
-#define CO_CAN_ID_RPDO_2      0x300U /**< 0x300 Default RPDO2 (+nodeID) */
-#define CO_CAN_ID_TPDO_3      0x380U /**< 0x380 Default TPDO3 (+nodeID) */
-#define CO_CAN_ID_RPDO_3      0x400U /**< 0x400 Default RPDO3 (+nodeID) */
-#define CO_CAN_ID_TPDO_4      0x480U /**< 0x480 Default TPDO4 (+nodeID) */
-#define CO_CAN_ID_RPDO_4      0x500U /**< 0x500 Default RPDO5 (+nodeID) */
-#define CO_CAN_ID_SDO_SRV     0x580U /**< 0x580 SDO response from server (+nodeID) */
-#define CO_CAN_ID_SDO_CLI     0x600U /**< 0x600 SDO request from client (+nodeID) */
-#define CO_CAN_ID_HEARTBEAT   0x700U /**< 0x700 Heartbeat message */
-#define CO_CAN_ID_LSS_SLV     0x7E4U /**< 0x7E4 LSS response from slave */
-#define CO_CAN_ID_LSS_MST     0x7E5U /**< 0x7E5 LSS request from master */
+#define CO_CAN_ID_NMT_SERVICE 0x00000U /**< 0x000 Network management */
+#define CO_CAN_ID_GFC         0x00001U
+#define CO_CAN_ID_SRDO_1      0x000FFU
+#define CO_CAN_ID_SYNC        0x00100U /**< 0x080 Synchronous message */
+#define CO_CAN_ID_EMERGENCY   0x00100U /**< 0x080 Emergency messages (+nodeID) */
+#define CO_CAN_ID_TIME        0x00200U /**< 0x100 Time message */
+#define CO_CAN_ID_SDO_SRV     0x00300U /**< 0x580 SDO response from server (+nodeID) */
+#define CO_CAN_ID_SDO_CLI     0x00400U /**< 0x600 SDO request from client (+nodeID) */
+#define CO_CAN_ID_TPDO_0      0x01000U
+#define CO_CAN_ID_TPDO_1      0x01200U
+#define CO_CAN_ID_TPDO_2      0x01400U
+#define CO_CAN_ID_TPDO_3      0x01600U
+#define CO_CAN_ID_TPDO_4      0x01800U
+#define CO_CAN_ID_TPDO_5      0x01A00U
+#define CO_CAN_ID_TPDO_6      0x01C00U
+#define CO_CAN_ID_TPDO_7      0x01E00U
+#define CO_CAN_ID_TPDO_8      0x02000U
+#define CO_CAN_ID_TPDO_9      0x02200U
+#define CO_CAN_ID_TPDO_10     0x02400U
+#define CO_CAN_ID_TPDO_11     0x02600U
+#define CO_CAN_ID_TPDO_12     0x02800U
+#define CO_CAN_ID_TPDO_13     0x02A00U
+#define CO_CAN_ID_TPDO_14     0x02C00U
+#define CO_CAN_ID_TPDO_15     0x02E00U
+#define CO_CAN_ID_RPDO_0      0x01100U
+#define CO_CAN_ID_RPDO_1      0x01300U
+#define CO_CAN_ID_RPDO_2      0x01500U
+#define CO_CAN_ID_RPDO_3      0x01700U
+#define CO_CAN_ID_RPDO_4      0x01900U
+#define CO_CAN_ID_RPDO_5      0x01B00U
+#define CO_CAN_ID_RPDO_6      0x01D00U
+#define CO_CAN_ID_RPDO_7      0x01F00U
+#define CO_CAN_ID_RPDO_8      0x02100U
+#define CO_CAN_ID_RPDO_9      0x02300U
+#define CO_CAN_ID_RPDO_10     0x02500U
+#define CO_CAN_ID_RPDO_11     0x02700U
+#define CO_CAN_ID_RPDO_12     0x02900U
+#define CO_CAN_ID_RPDO_13     0x02B00U
+#define CO_CAN_ID_RPDO_15     0x02F00U
+#define CO_CAN_ID_RPDO_14     0x02D00U
+#define CO_CAN_ID_STATE       0x0FE00U
+#define CO_CAN_ID_HEARTBEAT   0x0FF00U /**< 0x700 Heartbeat message */
+#define CO_CAN_ID_POWER       0x10000U
+#define CO_CAN_ID_CLIMATE     0x10100U
+#define CO_CAN_ID_SERIAL_NUM  0x1FF00U
+#define CO_CAN_ID_LOG_0       0x20000U
+#define CO_CAN_ID_LOG_1       0x20100U
+#define CO_CAN_ID_LOG_2       0x20200U
+#define CO_CAN_ID_LOG_3       0x20300U
+#define CO_CAN_ID_LOG_4       0x20400U
+#define CO_CAN_ID_LOG_5       0x20500U
+#define CO_CAN_ID_LOG_6       0x20600U
+#define CO_CAN_ID_LOG_7       0x20700U
+#define CO_CAN_ID_LSS_SLV     0x7E400U /**< 0x7E4 LSS response from slave */
+#define CO_CAN_ID_LSS_MST     0x7E500U /**< 0x7E5 LSS request from master */
 
 /** @} */ /* CO_Default_CAN_ID_t */
 
@@ -551,7 +587,7 @@ CO_ReturnError_t CO_CANrxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, u
  * @return Pointer to CAN transmit message buffer. 8 bytes data array inside buffer should be written, before
  * CO_CANsend() function is called. Zero is returned in case of wrong arguments.
  */
-CO_CANtx_t* CO_CANtxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint16_t ident, bool_t rtr, uint8_t noOfBytes,
+CO_CANtx_t* CO_CANtxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint32_t ident, bool_t rtr, uint8_t noOfBytes,
                                bool_t syncFlag);
 
 /**

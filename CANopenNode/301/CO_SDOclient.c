@@ -343,8 +343,8 @@ CO_SDOclient_setup(CO_SDOclient_t* SDO_C, uint32_t COB_IDClientToServer, uint32_
     }
 
     /* configure SDO client CAN reception */
-    uint32_t m = 0xDFFFFFFFU;
-    uint32_t i = 0x8000FF03U;
+    uint32_t m = 0x1FFFFF00U;           // mask message ID
+    uint32_t i = CO_CAN_ID_SDO_SRV;     // check message is SDO reponse
     CO_ReturnError_t ret = CO_CANrxBufferInit(SDO_C->CANdevRx, SDO_C->CANdevRxIdx, i, m, false, (void*)SDO_C,
                                               CO_SDOclient_receive);
 

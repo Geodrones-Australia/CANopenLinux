@@ -454,7 +454,7 @@ CO_CANrxBuffer_getInterface(CO_CANmodule_t* CANmodule, uint16_t ident, int* can_
 #endif /* CO_DRIVER_MULTI_INTERFACE */
 
 CO_CANtx_t*
-CO_CANtxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint16_t ident, bool_t rtr, uint8_t noOfBytes,
+CO_CANtxBufferInit(CO_CANmodule_t* CANmodule, uint16_t index, uint32_t ident, bool_t rtr, uint8_t noOfBytes,
                    bool_t syncFlag) {
     CO_CANtx_t* buffer = NULL;
 
